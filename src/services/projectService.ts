@@ -20,7 +20,7 @@ export const update = async (
 };
 
 export const listAll = async (): Promise<IProject[]> => {
-  return Project.find().populate("organization").exec();
+  return Project.find().populate("organization").lean();
 };
 
 // Es diu deleteProject i no delete perquè "delete" és paraula reservada en JS/TS, no es pot fer servir
