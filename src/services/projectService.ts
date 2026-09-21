@@ -19,6 +19,10 @@ export const update = async (
   return Project.findByIdAndUpdate(id, data, { new: true }).exec();
 };
 
+export const listAll = async (): Promise<IProject[]> => {
+  return Project.find().populate("organization").exec();
+};
+
 // Es diu deleteProject i no delete perquè "delete" és paraula reservada en JS/TS, no es pot fer servir
 export const deleteProject = async (id: string): Promise<IProject | null> => {
   return Project.findByIdAndDelete(id).exec();
